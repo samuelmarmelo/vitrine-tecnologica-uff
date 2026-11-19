@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Manifestar interesse (desktop) — Vitrine Tecnológica da UFF</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&amp;display=swap">
+<style>
+body{margin:0;text-wrap:pretty}
+h1,h2,h3,legend{text-wrap:balance}
+a{color:#004f9f}a:hover{color:#003a75}
+</style>
+</helmet>
+<div style="width: 1440px; height: 900px; overflow-y: auto; background: #ffffff; color: #18181b; font-family: 'Nunito Sans', system-ui, sans-serif; line-height: 1.5">
+
+<dc-import name="DesktopHeader" ativo="" hint-size="1440px,120px"></dc-import>
+
+<sc-if value="{{form}}" hint-placeholder-val="{{true}}">
+<div style="max-width: 1248px; margin: 0 auto; padding: 24px 24px 88px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px">
+<a href="DesktopPatente.dc.html" style="align-self: flex-start; display: flex; align-items: center; gap: 4px; min-height: 36px; font-size: 15px; font-weight: 700; color: #004f9f; text-decoration: none"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 6-6 6 6 6"></path></svg>Voltar para a tecnologia</a>
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) 400px; gap: 64px; align-items: start">
+
+<div style="display: flex; flex-direction: column; gap: 28px; min-width: 0">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<h1 style="margin: 0; font-size: 42px; font-weight: 800; line-height: 1.1; letter-spacing: -0.025em">Manifestar interesse</h1>
+<p style="margin: 0; max-width: 640px; font-size: 18px; color: #3f3f46">Conte quem você é e o que procura. A AGIR responde e, se fizer sentido, organiza a conversa com a equipe inventora.</p>
+</div>
+
+<form style="display: flex; flex-direction: column; gap: 22px">
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 20px">
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="fd-nome" style="font-size: 14px; font-weight: 800">Nome completo</label><input id="fd-nome" type="text" autocomplete="name" style="height: 52px; padding: 0 14px; border-radius: 12px; border: 1px solid #a1a1aa; font: inherit; font-size: 16px; color: #18181b; box-sizing: border-box"></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="fd-email" style="font-size: 14px; font-weight: 800">E-mail</label><input id="fd-email" type="email" autocomplete="email" style="height: 52px; padding: 0 14px; border-radius: 12px; border: 1px solid #a1a1aa; font: inherit; font-size: 16px; color: #18181b; box-sizing: border-box"></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="fd-tel" style="font-size: 14px; font-weight: 800">Telefone ou WhatsApp <span style="font-weight: 600; color: #5f5f68">(opcional)</span></label><input id="fd-tel" type="tel" autocomplete="tel" style="height: 52px; padding: 0 14px; border-radius: 12px; border: 1px solid #a1a1aa; font: inherit; font-size: 16px; color: #18181b; box-sizing: border-box"></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="fd-org" style="font-size: 14px; font-weight: 800">Empresa ou instituição</label><input id="fd-org" type="text" autocomplete="organization" style="height: 52px; padding: 0 14px; border-radius: 12px; border: 1px solid #a1a1aa; font: inherit; font-size: 16px; color: #18181b; box-sizing: border-box"></div>
+</div>
+
+<fieldset style="margin: 0; padding: 0; border: 0; display: flex; flex-direction: column; gap: 8px">
+<legend style="padding: 0; margin-bottom: 8px; font-size: 14px; font-weight: 800">Você é</legend>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{perfis}}" as="p" hint-placeholder-count="6"><button type="button" onClick="{{p.pick}}" aria-pressed="{{p.on}}" style="height: 44px; padding: 0 16px; border-radius: 999px; border: 1px solid {{p.bd}}; background: {{p.bg}}; color: {{p.fg}}; font: inherit; font-size: 15px; font-weight: 700; cursor: pointer">{{p.t}}</button></sc-for>
+</div>
+</fieldset>
+
+<fieldset style="margin: 0; padding: 0; border: 0; display: flex; flex-direction: column; gap: 8px">
+<legend style="padding: 0; margin-bottom: 8px; font-size: 14px; font-weight: 800">O que você procura? <span style="font-weight: 600; color: #5f5f68">Marque quantos quiser</span></legend>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+<sc-for list="{{tipos}}" as="t" hint-placeholder-count="4">
+<button type="button" onClick="{{t.toggle}}" aria-pressed="{{t.on}}" style="display: flex; align-items: center; gap: 12px; min-height: 72px; padding: 12px 16px; border-radius: 14px; border: 1px solid {{t.bd}}; background: {{t.bgRow}}; font: inherit; color: #18181b; text-align: left; cursor: pointer">
+<span aria-hidden="true" style="width: 22px; height: 22px; border-radius: 6px; border: 2px solid {{t.box}}; background: {{t.boxBg}}; color: #ffffff; display: flex; align-items: center; justify-content: center; box-sizing: border-box; flex-shrink: 0"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4 10-10"></path></svg></span>
+<span style="display: flex; flex-direction: column; line-height: 1.3"><b style="font-size: 16px; font-weight: 800">{{t.t}}</b><span style="font-size: 14px; color: #5f5f68">{{t.d}}</span></span>
+</button>
+</sc-for>
+</div>
+</fieldset>
+
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="fd-msg" style="font-size: 14px; font-weight: 800">Mensagem</label><textarea id="fd-msg" rows="5" placeholder="Ex.: queremos usar o corante numa linha de bebidas e gostaríamos de entender prazos e condições." style="padding: 14px; border-radius: 12px; border: 1px solid #a1a1aa; font: inherit; font-size: 16px; color: #18181b; resize: vertical; box-sizing: border-box"></textarea></div>
+
+<label for="fd-lgpd" style="display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: #3f3f46; cursor: pointer"><input id="fd-lgpd" type="checkbox" style="width: 22px; height: 22px; margin: 1px 0 0; accent-color: #004f9f; flex-shrink: 0">Autorizo a UFF a usar estes dados só para responder a este contato, conforme a LGPD e a <a href="DesktopPrivacidade.dc.html" style="color: #004f9f; font-weight: 700">política de privacidade</a>.</label>
+
+<div style="display: flex; align-items: center; gap: 24px; padding-top: 4px">
+<button type="button" onClick="{{enviar}}" style="height: 56px; padding: 0 36px; border: 0; border-radius: 12px; background: #004f9f; color: #ffffff; font: inherit; font-size: 17px; font-weight: 800; cursor: pointer">Enviar para a AGIR</button>
+<p style="margin: 0; font-size: 15px; color: #5f5f68">Prefere e-mail? Escreva para <a href="mailto:agir.proppi@id.uff.br" style="color: #004f9f; font-weight: 700">agir.proppi@id.uff.br</a></p>
+</div>
+</form>
+</div>
+
+<aside aria-label="Tecnologia selecionada" style="position: sticky; top: 24px; display: flex; flex-direction: column; gap: 16px">
+<div style="border-radius: 20px; border: 1px solid #e4e4e7; overflow: hidden; display: flex; flex-direction: column">
+<img src="/_blob/78ca5bded0a0d5f19682622304a32c5c" alt="" style="width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block">
+<div style="padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: #004f9f">Patente · PI 1004504-0</span>
+<b style="font-size: 18px; font-weight: 800; line-height: 1.3">Corante natural em microcápsulas, feito a partir de cianobactéria</b>
+<a href="DesktopPatente.dc.html" style="align-self: flex-start; display: flex; align-items: center; min-height: 40px; font-size: 15px; font-weight: 800; color: #004f9f">Ver página da tecnologia</a>
+</div>
+</div>
+<div style="padding: 22px 20px; border-radius: 20px; background: #f2f6fb; border: 1px solid #d6e2f0; display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-size: 17px; font-weight: 800">O que acontece depois</h2>
+<ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px">
+<li style="display: flex; gap: 12px"><span style="width: 28px; height: 28px; border-radius: 50%; background: #004f9f; color: #ffffff; font-size: 14px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0">1</span><span style="font-size: 15px; color: #3f3f46">A AGIR analisa seu pedido e responde por e-mail.</span></li>
+<li style="display: flex; gap: 12px"><span style="width: 28px; height: 28px; border-radius: 50%; background: #004f9f; color: #ffffff; font-size: 14px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0">2</span><span style="font-size: 15px; color: #3f3f46">Se houver encaixe, ela marca uma conversa com a equipe inventora.</span></li>
+<li style="display: flex; gap: 12px"><span style="width: 28px; height: 28px; border-radius: 50%; background: #004f9f; color: #ffffff; font-size: 14px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0">3</span><span style="font-size: 15px; color: #3f3f46">Vocês definem o formato: licença, transferência ou parceria de pesquisa.</span></li>
+</ol>
+<span style="font-size: 13px; color: #5f5f68">Sem cadastro e sem custo para manifestar interesse.</span>
+</div>
+</aside>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{sent}}" hint-placeholder-val="{{false}}">
+<div style="max-width: 768px; margin: 0 auto; padding: 72px 24px 96px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px">
+<span style="width: 72px; height: 72px; border-radius: 50%; background: #e8f0f9; color: #004f9f; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4 10-10"></path></svg></span>
+<h1 role="status" style="margin: 0; font-size: 42px; font-weight: 800; line-height: 1.1; letter-spacing: -0.025em">Interesse enviado</h1>
+<p style="margin: 0; font-size: 18px; color: #3f3f46">A AGIR recebeu seu contato sobre <b style="color: #18181b">Corante natural em microcápsulas</b>. Você vai receber uma confirmação no e-mail informado.</p>
+<div style="align-self: flex-start; display: flex; flex-direction: column; gap: 2px; padding: 14px 20px; border-radius: 14px; background: #f6f6f7"><span style="font-size: 13px; color: #5f5f68">Número do protocolo</span><b style="font-size: 20px; font-weight: 800; letter-spacing: .04em">VT-2026-0147</b></div>
+<h2 style="margin: 12px 0 0; font-size: 22px; font-weight: 800">Próximos passos</h2>
+<ol style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px">
+<li style="display: flex; flex-direction: column; gap: 10px; padding: 18px; border-radius: 16px; border: 1px solid #e4e4e7"><span style="width: 32px; height: 32px; border-radius: 50%; background: #004f9f; color: #ffffff; font-size: 15px; font-weight: 800; display: flex; align-items: center; justify-content: center">1</span><span style="font-size: 15px; color: #3f3f46">A AGIR analisa seu pedido e responde por e-mail.</span></li>
+<li style="display: flex; flex-direction: column; gap: 10px; padding: 18px; border-radius: 16px; border: 1px solid #e4e4e7"><span style="width: 32px; height: 32px; border-radius: 50%; background: #004f9f; color: #ffffff; font-size: 15px; font-weight: 800; display: flex; align-items: center; justify-content: center">2</span><span style="font-size: 15px; color: #3f3f46">Se houver encaixe, ela marca uma conversa com a equipe inventora.</span></li>
+<li style="display: flex; flex-direction: column; gap: 10px; padding: 18px; border-radius: 16px; border: 1px solid #e4e4e7"><span style="width: 32px; height: 32px; border-radius: 50%; background: #004f9f; color: #ffffff; font-size: 15px; font-weight: 800; display: flex; align-items: center; justify-content: center">3</span><span style="font-size: 15px; color: #3f3f46">Vocês definem o formato: licença, transferência ou parceria de pesquisa.</span></li>
+</ol>
+<div style="display: flex; gap: 12px; padding-top: 8px">
+<a href="DesktopCatalogo.dc.html" style="display: flex; align-items: center; justify-content: center; height: 52px; padding: 0 28px; border-radius: 12px; background: #004f9f; color: #ffffff; font-size: 16px; font-weight: 800; text-decoration: none">Ver outras tecnologias</a>
+<button type="button" onClick="{{voltar}}" style="height: 52px; padding: 0 24px; border-radius: 12px; border: 1px solid #c9d6e6; background: #ffffff; font: inherit; font-size: 16px; font-weight: 800; color: #004f9f; cursor: pointer">Enviar outro interesse</button>
+</div>
+</div>
+</sc-if>
+
+<dc-import name="DesktopFooter" hint-size="1440px,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+var PERFIS = ['Empresa', 'Startup', 'Pesquisador(a)', 'Investidor(a)', 'Órgão público', 'Outro'];
+var TIPOS = [
+  { id: 'lic', t: 'Licenciamento', d: 'Usar a tecnologia em produtos ou serviços' },
+  { id: 'trans', t: 'Transferência ou cessão', d: 'Adquirir os direitos sobre a tecnologia' },
+  { id: 'pd', t: 'Parceria de pesquisa (P&D)', d: 'Desenvolver ou adaptar junto com a UFF' },
+  { id: 'info', t: 'Quero mais informações', d: 'Entender melhor antes de decidir' }
+];
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { sent: false, perfil: 'Empresa', tipos: { lic: true } }; }
+  renderVals() {
+    var self = this, st = this.state;
+    return {
+      form: !st.sent, sent: st.sent,
+      enviar: function () { self.setState({ sent: true }); },
+      voltar: function () { self.setState({ sent: false }); },
+      perfis: PERFIS.map(function (p) { var on = st.perfil === p; return { t: p, on: String(on), bg: on ? '#004f9f' : '#ffffff', fg: on ? '#ffffff' : '#18181b', bd: on ? '#004f9f' : '#c9d6e6', pick: function () { self.setState({ perfil: p }); } }; }),
+      tipos: TIPOS.map(function (t) { var on = !!st.tipos[t.id]; return { t: t.t, d: t.d, on: String(on), bd: on ? '#004f9f' : '#e4e4e7', bgRow: on ? '#f2f6fb' : '#ffffff', box: on ? '#004f9f' : '#a1a1aa', boxBg: on ? '#004f9f' : '#ffffff', toggle: function () { var o = Object.assign({}, st.tipos); o[t.id] = !on; self.setState({ tipos: o }); } }; })
+    };
+  }
+}
+</script>
+</body>
+</html>
