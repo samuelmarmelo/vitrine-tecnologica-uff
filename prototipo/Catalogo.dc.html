@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Catálogo de tecnologias — Vitrine Tecnológica da UFF</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&amp;display=swap">
+<style>
+body{margin:0;text-wrap:pretty}
+h1,h2,h3,legend{text-wrap:balance}
+a{color:#004f9f}a:hover{color:#003a75}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; overflow-y: auto; background: #ffffff; color: #18181b; font-family: 'Nunito Sans', system-ui, sans-serif; line-height: 1.5">
+
+<sc-if value="{{menuOpen}}" hint-placeholder-val="{{false}}"><div style="position: sticky; top: 0; height: 0; z-index: 50"><div style="position: absolute; left: 0; top: 0; width: 390px; height: 844px"><dc-import name="MenuDrawer" on-close="{{closeMenu}}" hint-size="390px,844px"></dc-import></div></div></sc-if>
+
+<sc-if value="{{sheetOpen}}" hint-placeholder-val="{{false}}"><div style="position: sticky; top: 0; height: 0; z-index: 40"><div style="position: absolute; left: 0; top: 0; width: 390px; height: 844px">
+<button type="button" onClick="{{closeSheet}}" aria-label="Fechar filtros" style="position: absolute; inset: 0; border: 0; padding: 0; background: rgba(7,29,65,.5); cursor: pointer"></button>
+<div role="dialog" aria-labelledby="filt-t" style="position: absolute; left: 0; right: 0; bottom: 0; max-height: 760px; background: #ffffff; border-radius: 22px 22px 0 0; display: flex; flex-direction: column; box-shadow: 0 -12px 40px rgba(7,29,65,.25)">
+<div style="display: flex; justify-content: center; padding-top: 8px"><span aria-hidden="true" style="width: 40px; height: 4px; border-radius: 2px; background: #d4d4d8"></span></div>
+<div style="display: flex; align-items: center; justify-content: space-between; padding: 8px 8px 8px 20px; border-bottom: 1px solid #e4e4e7">
+<h2 id="filt-t" style="margin: 0; font-size: 20px; font-weight: 800">Filtros</h2>
+<button type="button" onClick="{{closeSheet}}" aria-label="Fechar filtros" style="width: 44px; height: 44px; border: 0; border-radius: 12px; background: #f2f6fb; color: #004f9f; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg></button>
+</div>
+<div style="overflow-y: auto; padding: 16px 20px; display: flex; flex-direction: column; gap: 22px">
+<fieldset style="margin: 0; padding: 0; border: 0; display: flex; flex-direction: column; gap: 4px">
+<legend style="padding: 0; margin-bottom: 8px; font-size: 15px; font-weight: 800">Situação no INPI</legend>
+<sc-for list="{{situacoes}}" as="s" hint-placeholder-count="3">
+<button type="button" onClick="{{s.toggle}}" aria-pressed="{{s.on}}" style="display: flex; align-items: center; gap: 12px; min-height: 48px; border: 0; padding: 0; background: transparent; font: inherit; font-size: 16px; color: #18181b; text-align: left; cursor: pointer">
+<span aria-hidden="true" style="width: 22px; height: 22px; border-radius: 6px; border: 2px solid {{s.bd}}; background: {{s.bg}}; color: #ffffff; display: flex; align-items: center; justify-content: center; box-sizing: border-box"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4 10-10"></path></svg></span>
+<span style="flex-grow: 1">{{s.t}}</span><span style="font-size: 14px; color: #5f5f68">{{s.n}}</span>
+</button>
+</sc-for>
+</fieldset>
+<fieldset style="margin: 0; padding: 0; border: 0; display: flex; flex-direction: column; gap: 10px">
+<legend style="padding: 0; margin-bottom: 8px; font-size: 15px; font-weight: 800">Área tecnológica</legend>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{areas}}" as="a" hint-placeholder-count="8"><button type="button" onClick="{{a.pick}}" aria-pressed="{{a.on}}" style="height: 40px; padding: 0 14px; border-radius: 999px; border: 1px solid {{a.bd}}; background: {{a.bg}}; color: {{a.fg}}; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer">{{a.t}}</button></sc-for>
+</div>
+</fieldset>
+<button type="button" onClick="{{togglePdf}}" aria-pressed="{{pdfOn}}" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 56px; padding: 0 14px; border-radius: 14px; border: 1px solid #e4e4e7; background: #ffffff; font: inherit; font-size: 16px; color: #18181b; text-align: left; cursor: pointer">
+<span style="display: flex; flex-direction: column; line-height: 1.3"><b style="font-weight: 800">Só com documentos em PDF</b><span style="font-size: 13px; color: #5f5f68">Folha de rosto, carta-patente e despachos</span></span>
+<span aria-hidden="true" style="width: 48px; height: 28px; border-radius: 14px; background: {{pdfTrack}}; position: relative; flex-shrink: 0"><span style="position: absolute; top: 3px; left: {{pdfKnob}}; width: 22px; height: 22px; border-radius: 50%; background: #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,.25)"></span></span>
+</button>
+</div>
+<div style="display: flex; gap: 10px; padding: 14px 20px 24px; border-top: 1px solid #e4e4e7">
+<button type="button" onClick="{{limpar}}" style="flex: 0 0 auto; height: 52px; padding: 0 18px; border-radius: 12px; border: 1px solid #c9d6e6; background: #ffffff; font: inherit; font-size: 15px; font-weight: 800; color: #004f9f; cursor: pointer">Limpar</button>
+<button type="button" onClick="{{closeSheet}}" style="flex-grow: 1; height: 52px; border-radius: 12px; border: 0; background: #004f9f; font: inherit; font-size: 16px; font-weight: 800; color: #ffffff; cursor: pointer">Ver resultados</button>
+</div>
+</div>
+</div></div></sc-if>
+
+<dc-import name="SiteHeader" on-menu="{{openMenu}}" hint-size="390px,104px"></dc-import>
+
+<section style="padding: 20px 16px 0; display: flex; flex-direction: column; gap: 14px">
+<a href="Main.dc.html" style="align-self: flex-start; display: flex; align-items: center; gap: 4px; min-height: 32px; font-size: 14px; font-weight: 700; color: #004f9f; text-decoration: none"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 6-6 6 6 6"></path></svg>Início</a>
+<h1 style="margin: 0; font-size: 28px; font-weight: 800; line-height: 1.15; letter-spacing: -0.02em">Catálogo de tecnologias</h1>
+<p style="margin: 0; font-size: 16px; color: #3f3f46">Tecnologias da UFF disponíveis para licenciamento, transferência ou parceria.</p>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="busca-cat" style="font-size: 14px; font-weight: 700">Buscar por palavra-chave</label>
+<div style="display: flex; align-items: center; gap: 8px; height: 52px; padding: 0 14px; border-radius: 14px; background: #ffffff; border: 1px solid #c9d6e6"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5f5f68" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg><input id="busca-cat" type="search" placeholder="Ex.: bateria, diagnóstico, petróleo" style="flex-grow: 1; min-width: 0; border: 0; outline: none; background: transparent; font: inherit; font-size: 16px; color: #18181b"></div>
+</div>
+<div role="group" aria-label="Tipo de tecnologia" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; padding: 4px; border-radius: 14px; background: #f2f2f4">
+<button type="button" onClick="{{tabPat}}" aria-pressed="{{patOn}}" style="height: 44px; border: 0; border-radius: 10px; background: {{patBg}}; box-shadow: {{patSh}}; font: inherit; font-size: 15px; font-weight: 800; color: #18181b; cursor: pointer">Patentes <span style="color: #5f5f68; font-weight: 700">104</span></button>
+<button type="button" onClick="{{tabSw}}" aria-pressed="{{swOn}}" style="height: 44px; border: 0; border-radius: 10px; background: {{swBg}}; box-shadow: {{swSh}}; font: inherit; font-size: 15px; font-weight: 800; color: #18181b; cursor: pointer">Programas <span style="color: #5f5f68; font-weight: 700">203</span></button>
+</div>
+</section>
+
+<div style="position: sticky; top: 0; z-index: 5; background: #ffffff; padding: 12px 16px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #ececef">
+<button type="button" onClick="{{openSheet}}" style="display: flex; align-items: center; gap: 8px; height: 44px; padding: 0 14px; border-radius: 12px; border: 1px solid #c9d6e6; background: #ffffff; font: inherit; font-size: 15px; font-weight: 800; color: #18181b; cursor: pointer; flex-shrink: 0"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M7 12h10M10 18h4"></path></svg>Filtros<sc-if value="{{temFiltro}}" hint-placeholder-val="{{false}}"><span style="min-width: 20px; height: 20px; border-radius: 10px; background: #004f9f; color: #ffffff; font-size: 12px; display: flex; align-items: center; justify-content: center">{{nFiltros}}</span></sc-if></button>
+<div style="display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none">
+<sc-for list="{{chips}}" as="c" hint-placeholder-count="5"><button type="button" onClick="{{c.pick}}" aria-pressed="{{c.on}}" style="flex-shrink: 0; height: 44px; padding: 0 14px; border-radius: 999px; border: 1px solid {{c.bd}}; background: {{c.bg}}; color: {{c.fg}}; font: inherit; font-size: 14px; font-weight: 700; white-space: nowrap; cursor: pointer">{{c.t}}</button></sc-for>
+</div>
+</div>
+
+<section aria-label="Resultados" style="padding: 16px 16px 0; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px">
+<span role="status" style="font-size: 14px; color: #3f3f46">Mostrando <b style="color: #18181b">{{mostrando}}</b> de <b style="color: #18181b">{{total}}</b></span>
+<button type="button" style="display: flex; align-items: center; gap: 4px; min-height: 44px; border: 0; padding: 0; background: transparent; font: inherit; font-size: 14px; font-weight: 700; color: #004f9f; cursor: pointer">Mais recentes<svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="m6 9 6 6 6-6"></path></svg></button>
+</div>
+<sc-for list="{{lista}}" as="t" hint-placeholder-count="4"><dc-import name="TechCard" item="{{t}}" hint-size="358px,430px"></dc-import></sc-for>
+<button type="button" style="height: 52px; border-radius: 12px; border: 1px solid #c9d6e6; background: #ffffff; font: inherit; font-size: 16px; font-weight: 800; color: #004f9f; cursor: pointer">Carregar mais tecnologias</button>
+<p style="margin: 0 0 28px; font-size: 13px; color: #5f5f68; text-align: center">Não achou o que procura? A AGIR pode indicar pesquisas em andamento na UFF.</p>
+</section>
+
+<dc-import name="BlocoAGIR" hint-size="390px,470px"></dc-import>
+<dc-import name="SiteFooter" hint-size="390px,640px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+var B = '/_blob/';
+var PAT = [
+  { href: 'Patente.dc.html', ill: B + '78ca5bded0a0d5f19682622304a32c5c', tipo: 'Patente', area: 'Biotecnologia', titulo: 'Corante natural em microcápsulas, feito a partir de cianobactéria', resumo: 'Pigmento estável para alimentos, cosméticos e tintas.', status: 'Concedida', ok: true, pdf: true, a: 'bio' },
+  { href: 'Patente.dc.html', ill: B + '5e32bc96102efad2cc334aae40792f32', tipo: 'Patente', area: 'Saúde e medicamentos', titulo: 'Kit de baixo custo para triagem da doença de Pompe, com coleta em casa', resumo: 'Urina coletada em papel filtro, fácil de armazenar e enviar ao laboratório.', status: 'Em andamento', ok: false, pdf: true, a: 'saude' },
+  { href: 'Patente.dc.html', ill: B + '4d5f3791c9dc59aadd2b6a5eca1e5795', tipo: 'Patente', area: 'Saúde e medicamentos', titulo: 'Formulação antiviral de uso nasal que alcança os alvéolos pulmonares', resumo: 'Inativou partículas de SARS-CoV-2 e H1N1, segundo o resumo do pedido.', status: 'Em andamento', ok: false, pdf: true, a: 'saude' },
+  { href: 'Patente.dc.html', ill: B + '8a67c779195ac2f2f0245e43098c9a23', tipo: 'Patente', area: 'Energia e meio ambiente', titulo: 'Novo uso do PTFE como material ativo em baterias alcalinas', resumo: 'Tratamento térmico faz o polímero participar das reações do eletrodo positivo.', status: 'Em andamento', ok: false, pdf: true, a: 'energia' },
+  { href: 'Patente.dc.html', ill: B + 'fcb7b58e417b1ed80532c0988ea3a741', tipo: 'Patente', area: 'Petróleo e gás', titulo: 'Método que avalia a matéria orgânica de rochas marinhas para exploração de petróleo', resumo: 'Simulações em nível de poço estimam quantidade, qualidade e maturação.', status: 'Concedida', ok: true, pdf: true, a: 'petro' },
+  { href: 'Patente.dc.html', ill: B + '71e3d736f2f5121f0b393306c5fda41f', tipo: 'Patente', area: 'Alimentos e agronegócio', titulo: 'Petisco crocante de kefir, produzido por liofilização', resumo: 'Leite fermentado com kefir, dessorado e moldado em formato de snack.', status: 'Em andamento', ok: false, pdf: true, a: 'alim' }
+];
+var SW = [
+  { href: 'Patente.dc.html', ill: B + 'f7f7c756534455be036d9adb1a6186e2', tipo: 'Programa de computador', area: 'Eletrônica e computação', titulo: 'Balaio: mede o resto de comida no prato com processamento de imagem', resumo: 'Inteligência artificial e reconhecimento de padrões para reduzir o desperdício.', status: 'Registrado', ok: true, pdf: false, a: 'comp' }
+];
+var CHIPS = [
+  { id: 'todas', t: 'Todas as áreas' }, { id: 'saude', t: 'Saúde' }, { id: 'energia', t: 'Energia' }, { id: 'petro', t: 'Petróleo e gás' }, { id: 'alim', t: 'Alimentos' }, { id: 'bio', t: 'Biotecnologia' }
+];
+var AREAS = [
+  { id: 'todas', t: 'Todas' }, { id: 'saude', t: 'Saúde e medicamentos · 40' }, { id: 'quim', t: 'Química e materiais · 14' }, { id: 'alim', t: 'Alimentos e agronegócio · 12' }, { id: 'energia', t: 'Energia e meio ambiente · 10' }, { id: 'eng', t: 'Engenharia · 10' }, { id: 'petro', t: 'Petróleo e gás · 8' }, { id: 'bio', t: 'Biotecnologia · 7' }
+];
+var SIT = [
+  { id: 'conc', t: 'Concedida', n: '36' }, { id: 'and', t: 'Pedido em andamento', n: '60' }, { id: 'rec', t: 'Em recurso no INPI', n: '8' }
+];
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { menu: false, sheet: false, tab: 'pat', area: 'todas', sit: {}, pdf: false }; }
+  renderVals() {
+    var self = this, st = this.state;
+    var base = st.tab === 'pat' ? PAT : SW;
+    var lista = st.area === 'todas' ? base : base.filter(function (x) { return x.a === st.area; });
+    var nSit = Object.keys(st.sit).filter(function (k) { return st.sit[k]; }).length;
+    var nF = nSit + (st.pdf ? 1 : 0) + (st.area !== 'todas' ? 1 : 0);
+    function pill(on) { return on ? { bg: '#004f9f', fg: '#ffffff', bd: '#004f9f' } : { bg: '#ffffff', fg: '#18181b', bd: '#c9d6e6' }; }
+    return {
+      menuOpen: st.menu, openMenu: function () { self.setState({ menu: true }); }, closeMenu: function () { self.setState({ menu: false }); },
+      sheetOpen: st.sheet, openSheet: function () { self.setState({ sheet: true }); }, closeSheet: function () { self.setState({ sheet: false }); },
+      limpar: function () { self.setState({ sit: {}, pdf: false, area: 'todas' }); },
+      patOn: String(st.tab === 'pat'), swOn: String(st.tab === 'sw'),
+      patBg: st.tab === 'pat' ? '#ffffff' : 'transparent', swBg: st.tab === 'sw' ? '#ffffff' : 'transparent',
+      patSh: st.tab === 'pat' ? '0 1px 3px rgba(0,0,0,.12)' : 'none', swSh: st.tab === 'sw' ? '0 1px 3px rgba(0,0,0,.12)' : 'none',
+      tabPat: function () { self.setState({ tab: 'pat', area: 'todas' }); }, tabSw: function () { self.setState({ tab: 'sw', area: 'todas' }); },
+      chips: CHIPS.map(function (c) { var on = st.area === c.id, p = pill(on); return { t: c.t, on: String(on), bg: p.bg, fg: p.fg, bd: p.bd, pick: function () { self.setState({ area: c.id }); } }; }),
+      areas: AREAS.map(function (c) { var on = st.area === c.id, p = pill(on); return { t: c.t, on: String(on), bg: p.bg, fg: p.fg, bd: p.bd, pick: function () { self.setState({ area: c.id }); } }; }),
+      situacoes: SIT.map(function (s) { var on = !!st.sit[s.id]; return { t: s.t, n: s.n, on: String(on), bg: on ? '#004f9f' : '#ffffff', bd: on ? '#004f9f' : '#a1a1aa', toggle: function () { var o = Object.assign({}, st.sit); o[s.id] = !on; self.setState({ sit: o }); } }; }),
+      pdfOn: String(st.pdf), pdfTrack: st.pdf ? '#004f9f' : '#d4d4d8', pdfKnob: st.pdf ? '23px' : '3px', togglePdf: function () { self.setState({ pdf: !st.pdf }); },
+      temFiltro: nF > 0, nFiltros: nF,
+      lista: lista, mostrando: lista.length, total: st.tab === 'pat' ? '104' : '203'
+    };
+  }
+}
+</script>
+</body>
+</html>
