@@ -1,0 +1,33 @@
+Vitrine Tecnológica da UFF
+Copyright (c) 2026 Universidade Federal Fluminense (UFF). Todos os direitos reservados.
+
+Programa de computador registrado no Instituto Nacional da Propriedade
+Industrial (INPI), nos termos da Lei nº 9.609/1998 (Lei do Software) e da
+Lei nº 9.610/1998 (Lei de Direitos Autorais).
+
+Titular: Universidade Federal Fluminense (UFF), por meio da AGIR, Agência de
+         Inovação da UFF.
+Autores: Samuel Neves Marmelo
+         Gabriel Marcuzzo do Canto Cavalheiro
+
+O código-fonte está visível neste repositório apenas para consulta. A
+publicação do código não concede licença de uso.
+
+Sem autorização prévia e por escrito da titular, é proibido:
+- copiar, reproduzir ou distribuir este programa, no todo ou em parte;
+- modificar, adaptar, traduzir ou criar obras derivadas;
+- usar este programa ou suas partes para fins comerciais;
+- sublicenciar, vender, alugar ou ceder este programa a terceiros.
+
+Pedidos de autorização e licenciamento: AGIR, Agência de Inovação da UFF
+(https://agir.uff.br).
+
+Componentes de terceiros, que seguem as próprias licenças:
+- Preact, em runtime/vendor/: licença MIT (runtime/vendor/PREACT-LICENSE).
+- Fonte Nunito Sans, carregada do Google Fonts: SIL Open Font License 1.1.
+- Logotipo e identidade visual da UFF e da barra gov.br: marcas dos
+  respectivos titulares, usadas com autorização e não abrangidas por esta
+  licença.
+
+ESTE PROGRAMA É FORNECIDO "NO ESTADO EM QUE SE ENCONTRA", SEM GARANTIAS DE
+QUALQUER TIPO, EXPRESSAS OU IMPLÍCITAS.

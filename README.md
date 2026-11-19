@@ -61,3 +61,15 @@ carrega script externo.
 3. Imagem nova (`/_blob/<id>`): salve em `assets/blob/<id>.svg`.
 4. Tela nova: acrescente a rota em `ROTAS`, no topo de `runtime/dc.js`.
 5. Rode `node tests/verificar.mjs`.
+
+## Licença
+
+Programa de computador registrado no INPI. Todos os direitos reservados.
+
+- Titular: Universidade Federal Fluminense (UFF), por meio da AGIR.
+- Autores: Samuel Neves Marmelo e Gabriel Marcuzzo do Canto Cavalheiro.
+
+O código está aqui só para consulta: copiar, modificar, distribuir ou usar
+depende de autorização por escrito da UFF, pedida à
+[AGIR](https://agir.uff.br). Componentes de terceiros e detalhes em
+[LICENSE](LICENSE).
