@@ -64,7 +64,8 @@ carrega script externo.
 
 ## Licença
 
-Programa de computador registrado no INPI. Todos os direitos reservados.
+Programa de computador com pedido de registro em andamento no INPI. Todos os
+direitos reservados.
 
 - Titular: Universidade Federal Fluminense (UFF), por meio da AGIR.
 - Autores: Samuel Neves Marmelo e Gabriel Marcuzzo do Canto Cavalheiro.
