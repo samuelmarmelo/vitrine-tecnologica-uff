@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Resultados da busca (desktop) — Vitrine Tecnológica da UFF</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&amp;display=swap">
+<style>
+body{margin:0;text-wrap:pretty}
+h1,h2,h3,legend{text-wrap:balance}
+a{color:#004f9f}a:hover{color:#003a75}
+</style>
+</helmet>
+<div style="width: 1440px; height: 900px; overflow-y: auto; background: #ffffff; color: #18181b; font-family: 'Nunito Sans', system-ui, sans-serif; line-height: 1.5">
+
+<dc-import name="DesktopHeader" ativo="" hint-size="1440px,120px"></dc-import>
+
+<section aria-labelledby="busca-r-t" style="background: #f2f6fb; border-bottom: 1px solid #e4e4e7">
+<div style="max-width: 1248px; margin: 0 auto; padding: 24px 24px 28px; box-sizing: border-box; display: flex; flex-direction: column; gap: 16px">
+<nav aria-label="Você está em" style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: #5f5f68"><a href="DesktopInicio.dc.html" style="font-weight: 700; color: #004f9f; text-decoration: none">Início</a><span aria-hidden="true">/</span><span aria-current="page">Resultados da busca</span></nav>
+<h1 id="busca-r-t" style="margin: 0; font-size: 40px; font-weight: 800; line-height: 1.1; letter-spacing: -0.02em">{{titulo}}</h1>
+<div style="display: flex; align-items: center; gap: 10px; max-width: 760px; height: 60px; padding: 0 8px 0 18px; border-radius: 16px; background: #ffffff; border: 1px solid #c9d6e6; box-sizing: border-box">
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5f5f68" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg>
+<label for="busca-r-in" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Buscar tecnologia</label>
+<input id="busca-r-in" type="search" value="{{q}}" onChange="{{digitar}}" autocomplete="off" placeholder="Tema, aplicação ou nº do pedido" style="flex-grow: 1; min-width: 0; border: 0; outline: none; background: transparent; font: inherit; font-size: 18px; color: #18181b">
+<sc-if value="{{temQ}}" hint-placeholder-val="{{true}}"><button type="button" onClick="{{limpar}}" aria-label="Limpar busca" style="width: 40px; height: 40px; border: 0; padding: 0; border-radius: 10px; background: #f2f2f4; color: #3f3f46; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"></path></svg></button></sc-if>
+<button type="button" style="height: 44px; padding: 0 24px; border: 0; border-radius: 10px; background: #004f9f; color: #ffffff; font: inherit; font-size: 16px; font-weight: 800; cursor: pointer">Buscar</button>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px">
+<span style="font-size: 14px; font-weight: 700; color: #3f3f46; margin-right: 4px">Tente também:</span>
+<sc-for list="{{tente}}" as="t" hint-placeholder-count="5"><button type="button" onClick="{{t.pick}}" style="height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid #c9d6e6; background: #ffffff; font: inherit; font-size: 14px; font-weight: 700; color: #18181b; cursor: pointer">{{t.t}}</button></sc-for>
+</div>
+</div>
+</section>
+
+<div style="max-width: 1248px; margin: 0 auto; padding: 28px 24px 72px; box-sizing: border-box; display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 16px">
+<div role="group" aria-label="Filtrar por tipo" style="display: flex; gap: 8px">
+<sc-for list="{{tipos}}" as="t" hint-placeholder-count="3"><button type="button" onClick="{{t.pick}}" aria-pressed="{{t.on}}" style="display: flex; align-items: center; gap: 8px; height: 44px; padding: 0 16px; border-radius: 999px; border: 1px solid {{t.bd}}; background: {{t.bg}}; font: inherit; font-size: 15px; font-weight: 800; color: {{t.fg}}; white-space: nowrap; cursor: pointer">{{t.t}}<span style="min-width: 24px; height: 24px; padding: 0 6px; box-sizing: border-box; border-radius: 12px; background: {{t.nbg}}; font-size: 13px; display: flex; align-items: center; justify-content: center">{{t.n}}</span></button></sc-for>
+</div>
+<div style="display: flex; align-items: center; gap: 20px">
+<span role="status" style="font-size: 15px; color: #3f3f46">{{contagem}}</span>
+<label style="display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 700; color: #3f3f46">Ordenar por
+<select style="height: 44px; padding: 0 12px; border-radius: 10px; border: 1px solid #c9d6e6; background: #ffffff; font: inherit; font-size: 15px; font-weight: 700; color: #18181b"><option>Mais relevantes</option><option>Mais recentes</option><option>Concedidas primeiro</option></select>
+</label>
+</div>
+</div>
+
+<sc-if value="{{temRes}}" hint-placeholder-val="{{true}}">
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: stretch">
+<sc-for list="{{lista}}" as="t" hint-placeholder-count="3"><div style="display: flex; min-width: 0"><dc-import name="TechCard" item="{{t}}" hint-size="386px,460px"></dc-import></div></sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{semRes}}" hint-placeholder-val="{{false}}">
+<div style="display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 48px; align-items: center; padding: 40px; border-radius: 20px; background: #f6f6f7; border: 1px solid #ececef">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<span style="width: 56px; height: 56px; border-radius: 50%; background: #ffffff; color: #004f9f; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4M8.5 11h5"></path></svg></span>
+<h2 style="margin: 0; font-size: 28px; font-weight: 800; line-height: 1.2">{{vazioTitulo}}</h2>
+<p style="margin: 0; font-size: 17px; color: #3f3f46">A AGIR pode indicar pesquisas em andamento na UFF que ainda não estão na vitrine.</p>
+<div style="display: flex; gap: 12px; padding-top: 4px">
+<a href="DesktopInteresse.dc.html" style="display: flex; align-items: center; height: 52px; padding: 0 24px; border-radius: 12px; background: #004f9f; color: #ffffff; font-size: 16px; font-weight: 800; text-decoration: none">Falar com a AGIR</a>
+<a href="DesktopCatalogo.dc.html" style="display: flex; align-items: center; height: 52px; padding: 0 22px; border-radius: 12px; border: 1px solid #c9d6e6; background: #ffffff; color: #004f9f; font-size: 16px; font-weight: 800; text-decoration: none">Ver catálogo completo</a>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px; padding: 24px; border-radius: 16px; background: #ffffff">
+<h3 style="margin: 0; font-size: 16px; font-weight: 800">Dicas para buscar</h3>
+<ul style="margin: 0; padding: 0 0 0 20px; display: flex; flex-direction: column; gap: 6px; font-size: 15px; color: #3f3f46">
+<li>Confira a grafia das palavras</li>
+<li>Use termos mais gerais, como “saúde” ou “energia”</li>
+<li>Busque pela aplicação, como “bateria” ou “diagnóstico”</li>
+<li>Digite o número do pedido no INPI, se souber</li>
+</ul>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{semQ}}" hint-placeholder-val="{{false}}"><p style="margin: 0; padding: 32px; border-radius: 16px; background: #f6f6f7; font-size: 17px; color: #3f3f46; text-align: center">Digite um termo acima ou escolha uma das sugestões para ver os resultados.</p></sc-if>
+</div>
+
+<dc-import name="DesktopBlocoAGIR" hint-size="1440px,400px"></dc-import>
+<dc-import name="DesktopFooter" hint-size="1440px,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+var B = '/_blob/', P = 'DesktopPatente.dc.html';
+var TECH = [
+  { href: P, ill: B + '78ca5bded0a0d5f19682622304a32c5c', tipo: 'Patente', area: 'Biotecnologia', titulo: 'Corante natural em microcápsulas, feito a partir de cianobactéria', resumo: 'Pigmento estável para alimentos, cosméticos e tintas.', status: 'Concedida', ok: true, pdf: true, tags: 'corante pigmento alimentos cosmeticos tintas microencapsulacao' },
+  { href: P, ill: B + 'de5e956d7b4baf4ac84f816c157c7742', tipo: 'Patente', area: 'Energia e meio ambiente', titulo: 'Barco autônomo movido a energia solar que monitora a qualidade da água', resumo: 'Mede vários parâmetros ao mesmo tempo e envia os dados em tempo real por rádio ou 4G/5G.', status: 'Em andamento', ok: false, pdf: true, tags: 'energia solar agua monitoramento sensores' },
+  { href: P, ill: B + '9bed532f65c2cd83b501f16b90ba4cfe', tipo: 'Patente', area: 'Petróleo e gás', titulo: 'Câmera submarina com IA que mede vazamentos de óleo e gás', resumo: 'Calcula área, bolhas e vazão em tempo real e dispara alarmes.', status: 'Em andamento', ok: false, pdf: true, tags: 'petroleo gas energia vazamento inteligencia artificial ia camera monitoramento' },
+  { href: P, ill: B + 'f7f7c756534455be036d9adb1a6186e2', tipo: 'Programa de computador', area: 'Eletrônica e computação', titulo: 'Balaio: mede o resto de comida no prato com processamento de imagem', resumo: 'Inteligência artificial e reconhecimento de padrões para reduzir o desperdício.', status: 'Registrado', ok: true, pdf: false, tags: 'software inteligencia artificial ia imagem alimentos desperdicio' },
+  { href: P, ill: B + '5e32bc96102efad2cc334aae40792f32', tipo: 'Patente', area: 'Saúde e medicamentos', titulo: 'Kit de baixo custo para triagem da doença de Pompe, com coleta em casa', resumo: 'Urina coletada em papel filtro, fácil de armazenar e enviar ao laboratório.', status: 'Em andamento', ok: false, pdf: true, tags: 'saude diagnostico triagem doenca rara' },
+  { href: P, ill: B + '4d5f3791c9dc59aadd2b6a5eca1e5795', tipo: 'Patente', area: 'Saúde e medicamentos', titulo: 'Formulação antiviral de uso nasal que alcança os alvéolos pulmonares', resumo: 'Inativou partículas de SARS-CoV-2 e H1N1, segundo o resumo do pedido.', status: 'Em andamento', ok: false, pdf: true, tags: 'saude medicamento antiviral covid gripe' },
+  { href: P, ill: B + '8a67c779195ac2f2f0245e43098c9a23', tipo: 'Patente', area: 'Energia e meio ambiente', titulo: 'Novo uso do PTFE como material ativo em baterias alcalinas', resumo: 'Tratamento térmico faz o polímero participar das reações do eletrodo positivo.', status: 'Em andamento', ok: false, pdf: true, tags: 'energia bateria eletroquimica materiais' },
+  { href: P, ill: B + 'fcb7b58e417b1ed80532c0988ea3a741', tipo: 'Patente', area: 'Petróleo e gás', titulo: 'Método que avalia a matéria orgânica de rochas marinhas para exploração de petróleo', resumo: 'Simulações em nível de poço estimam quantidade, qualidade e maturação.', status: 'Concedida', ok: true, pdf: true, tags: 'petroleo exploracao geologia energia' },
+  { href: P, ill: B + '71e3d736f2f5121f0b393306c5fda41f', tipo: 'Patente', area: 'Alimentos e agronegócio', titulo: 'Petisco crocante de kefir, produzido por liofilização', resumo: 'Leite fermentado com kefir, dessorado e moldado em formato de snack.', status: 'Em andamento', ok: false, pdf: true, tags: 'alimentos laticinios snack fermentado' }
+];
+var TENTE = ['energia', 'saúde', 'inteligência artificial', 'alimentos', 'grafeno'];
+function norm(s) { return (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
+function buscar(q) {
+  var n = norm(q).trim(); if (!n) return [];
+  var ws = n.split(/\s+/);
+  return TECH.filter(function (t) { var h = norm(t.titulo + ' ' + t.resumo + ' ' + t.area + ' ' + t.tipo + ' ' + t.tags); return ws.every(function (w) { return h.indexOf(w) > -1; }); });
+}
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { q: 'energia', tipo: 'todas' }; }
+  renderVals() {
+    var self = this, st = this.state;
+    var temQ = st.q.trim().length > 0;
+    var res = buscar(st.q);
+    var nPat = res.filter(function (t) { return t.tipo === 'Patente'; }).length, nSw = res.length - nPat;
+    var lista = st.tipo === 'pat' ? res.filter(function (t) { return t.tipo === 'Patente'; }) : st.tipo === 'sw' ? res.filter(function (t) { return t.tipo !== 'Patente'; }) : res;
+    function tab(id, t, n) { var on = st.tipo === id; return { t: t, n: n, on: String(on), bg: on ? '#004f9f' : '#ffffff', fg: on ? '#ffffff' : '#18181b', bd: on ? '#004f9f' : '#c9d6e6', nbg: on ? 'rgba(255,255,255,.2)' : '#f2f2f4', pick: function () { self.setState({ tipo: id }); } }; }
+    return {
+      q: st.q, temQ: temQ, semQ: !temQ,
+      titulo: temQ ? 'Resultados para “' + st.q.trim() + '”' : 'Buscar tecnologia',
+      digitar: function (e) { self.setState({ q: e.target.value, tipo: 'todas' }); },
+      limpar: function () { self.setState({ q: '', tipo: 'todas' }); },
+      tente: TENTE.map(function (t) { return { t: t, pick: function () { self.setState({ q: t, tipo: 'todas' }); } }; }),
+      tipos: [tab('todas', 'Todas', res.length), tab('pat', 'Patentes', nPat), tab('sw', 'Programas de computador', nSw)],
+      contagem: res.length === 1 ? '1 tecnologia encontrada' : res.length + ' tecnologias encontradas',
+      lista: lista, temRes: temQ && lista.length > 0, semRes: temQ && lista.length === 0,
+      vazioTitulo: 'Nenhuma tecnologia encontrada para “' + st.q.trim() + '”'
+    };
+  }
+}
+</script>
+</body>
+</html>
