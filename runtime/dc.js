@@ -18,6 +18,8 @@
   var BLOB = "assets/blob/";
   var LARGURA_DESKTOP = 1024;
   var LARGURA_MOBILE = 390;
+  var LARGURA_DESKTOP_BASE = 1280;
+  var ZOOM_MOBILE_MAX = 1.3;
 
   // Rota -> [tela mobile, tela desktop]
   var ROTAS = {
@@ -356,17 +358,23 @@
 
     if (s.mobile) {
       // Celular de verdade: a tela de 390 px ocupa a largura toda.
-      var zoom = s.w / LARGURA_MOBILE;
+      // Em tablet, o zoom tem teto e a coluna fica centralizada.
+      var zoom = Math.min(s.w / LARGURA_MOBILE, ZOOM_MOBILE_MAX);
       var altura = Math.round(s.alt / zoom);
-      return h("div", {
-        class: "dc-tela dc-tela--mobile dc-tela--cheia",
-        key: s.nome,
-        style: "zoom:" + zoom + ";--dc-altura:" + altura + "px"
-      }, h(Tela, null));
+      return h("div", { class: "dc-fundo-mobile" },
+        h("div", {
+          class: "dc-tela dc-tela--mobile dc-tela--cheia",
+          key: s.nome,
+          style: "zoom:" + zoom + ";--dc-altura:" + altura + "px"
+        }, h(Tela, null)));
     }
 
+    // Desktop: o menu do cabeçalho precisa de 1280 px; abaixo disso a tela
+    // inteira é reduzida na mesma proporção, em vez de cortar o menu.
+    var zoomD = Math.min(1, s.w / LARGURA_DESKTOP_BASE);
+    var estilo = zoomD < 1 ? "zoom:" + zoomD + ";--dc-altura:" + Math.round(s.alt / zoomD) + "px" : "--dc-altura:" + s.alt + "px";
     return h(P.Fragment, null,
-      h("div", { class: "dc-tela dc-tela--desktop", key: s.nome }, h(Tela, null)),
+      h("div", { class: "dc-tela dc-tela--desktop", key: s.nome, style: estilo }, h(Tela, null)),
       h(Seletor, { mobile: false }));
   };
 

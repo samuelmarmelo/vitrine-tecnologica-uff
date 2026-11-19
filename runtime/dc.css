@@ -26,6 +26,12 @@ body { font-family: 'Nunito Sans', system-ui, sans-serif; background: #ffffff; }
 
 /* Desktop: as telas são páginas fluidas. */
 .dc-tela--desktop { min-height: 100vh; }
+/* As telas desktop do design têm 1440 x 900 fixos; aqui ocupam a janela inteira. */
+.dc-tela--desktop > :first-child { width: 100% !important; height: var(--dc-altura, 100vh) !important; }
+
+/* Tablet: coluna mobile centralizada, com fundo nas laterais. */
+.dc-fundo-mobile { background: #e9eef5; min-height: 100vh; }
+.dc-fundo-mobile > .dc-tela--cheia { width: 390px; margin: 0 auto; background: #ffffff; }
 
 .dc-seletor {
   position: fixed; left: 16px; bottom: 16px; z-index: 1000;
