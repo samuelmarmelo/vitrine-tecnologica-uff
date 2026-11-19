@@ -18,6 +18,10 @@ interesse só mostra a confirmação.
   escolhe. `?v=mobile` mostra a versão mobile numa moldura de celular.
 - `runtime/dc.css`: moldura que encaixa as telas de tamanho fixo na janela.
 - `assets/blob/`: ilustrações enviadas ao Claude Design (`/_blob/<id>`).
+- `assets/fonts/`: Nunito Sans em woff2 variável (pesos 400 a 800, latin e
+  latin-ext), hospedada aqui, sem Google Fonts. Licença OFL em
+  `assets/fonts/OFL.txt`. Os `<link>` do Google Fonts que vêm nas telas são
+  ignorados pelo runtime.
 
 ## Rotas
 

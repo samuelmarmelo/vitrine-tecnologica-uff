@@ -241,6 +241,8 @@
     Array.prototype.forEach.call(helmet.children, function (el) {
       if (el.localName === "link") {
         var href = el.getAttribute("href");
+        // A Nunito Sans é servida do próprio site (runtime/dc.css).
+        if (/^https:\/\/fonts\.googleapis\.com\//.test(href || "")) return;
         var existe = Array.prototype.some.call(document.querySelectorAll("link"), function (l) { return l.getAttribute("href") === href; });
         if (existe) return;
         var l = document.createElement("link");

@@ -38,6 +38,17 @@ const index = readFileSync(join(RAIZ, "index.html"), "utf8");
 for (const src of index.matchAll(/(?:src|href)="((?:runtime|assets)\/[^"]+)"/g)) {
   confere(existsSync(join(RAIZ, src[1])), `index.html: falta ${src[1]}`);
 }
+confere(!/fonts\.(googleapis|gstatic)\.com/.test(index), "index.html: ainda carrega o Google Fonts");
+
+// Fontes hospedadas no próprio site.
+const css = readFileSync(join(RAIZ, "runtime", "dc.css"), "utf8");
+const fontes = [...css.matchAll(/url\((\.\.\/assets\/fonts\/[^)]+\.woff2)\)/g)].map((m) => m[1]);
+confere(fontes.length >= 1, "runtime/dc.css: sem @font-face local");
+for (const f of fontes) {
+  const caminho = join(RAIZ, "runtime", f);
+  confere(existsSync(caminho) && readFileSync(caminho).subarray(0, 4).toString("latin1") === "wOF2", `${f}: woff2 ausente ou inválido`);
+}
+confere(existsSync(join(RAIZ, "assets", "fonts", "OFL.txt")), "assets/fonts/OFL.txt: falta a licença da fonte");
 
 const arquivos = readdirSync(PASTA).filter((f) => f.endsWith(".dc.html"));
 const nomes = new Set(arquivos.map((f) => f.replace(/\.dc\.html$/, "")));

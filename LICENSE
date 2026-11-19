@@ -26,7 +26,8 @@ Pedidos de autorização e licenciamento: AGIR, Agência de Inovação da UFF
 
 Componentes de terceiros, que seguem as próprias licenças:
 - Preact, em runtime/vendor/: licença MIT (runtime/vendor/PREACT-LICENSE).
-- Fonte Nunito Sans, carregada do Google Fonts: SIL Open Font License 1.1.
+- Fonte Nunito Sans, em assets/fonts/: SIL Open Font License 1.1
+  (assets/fonts/OFL.txt).
 - Logotipo e identidade visual da UFF e da barra gov.br: marcas dos
   respectivos titulares, usadas com autorização e não abrangidas por esta
   licença.
