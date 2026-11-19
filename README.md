@@ -1,2 +1,2 @@
-# vitrine-tecnologica-uff-
+# vitrine-tecnologica-uff
 Vitrine Tecnológica da UFF
