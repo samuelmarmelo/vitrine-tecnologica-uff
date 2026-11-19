@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Termos de uso (desktop) — Vitrine Tecnológica da UFF</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&amp;display=swap">
+<style>
+body{margin:0;text-wrap:pretty}
+h1,h2,h3,legend{text-wrap:balance}
+a{color:#004f9f}a:hover{color:#003a75}
+</style>
+</helmet>
+<div style="width: 1440px; height: 900px; overflow-y: auto; background: #ffffff; color: #18181b; font-family: 'Nunito Sans', system-ui, sans-serif; line-height: 1.5">
+<dc-import name="DesktopHeader" ativo="" hint-size="1440px,120px"></dc-import>
+<dc-import name="ConteudoLegal" pagina="termos" layout="desktop" hint-size="1440px,1700px"></dc-import>
+<dc-import name="DesktopFooter" hint-size="1440px,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

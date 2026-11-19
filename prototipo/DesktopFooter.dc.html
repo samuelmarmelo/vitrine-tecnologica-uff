@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Rodapé desktop — Vitrine Tecnológica da UFF</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&amp;display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<footer style="width: 100%; text-wrap: pretty; box-sizing: border-box; background: #071d41; color: #ffffff; font-family: 'Nunito Sans', system-ui, sans-serif; line-height: 1.5">
+<div style="max-width: 1248px; margin: 0 auto; padding: 56px 24px 0; box-sizing: border-box; display: grid; grid-template-columns: minmax(0, 1.5fr) repeat(3, minmax(0, 1fr)); gap: 48px">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<img src="/_blob/a2421fd441b650d239fd61036188edf9" alt="Universidade Federal Fluminense (UFF)" style="width: 150px; height: auto; display: block">
+<span style="font-size: 19px; font-weight: 800">Vitrine Tecnológica da UFF</span>
+<p style="margin: 0; max-width: 380px; font-size: 14px; color: rgba(255,255,255,.82)">Conteúdo mantido pela AGIR, Agência de Inovação da UFF. Dados de patentes e programas de computador obtidos no INPI.</p>
+</div>
+<sc-for list="{{grupos}}" as="g" hint-placeholder-count="3">
+<nav aria-label="{{g.t}}" style="display: flex; flex-direction: column; gap: 6px">
+<h2 style="margin: 0 0 6px; font-size: 15px; font-weight: 800; color: #ffffff">{{g.t}}</h2>
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column">
+<sc-for list="{{g.links}}" as="l" hint-placeholder-count="3"><li><a href="{{l.href}}" style="display: flex; align-items: center; min-height: 36px; font-size: 15px; color: rgba(255,255,255,.88); text-decoration: none">{{l.t}}</a></li></sc-for>
+</ul>
+</nav>
+</sc-for>
+</div>
+<div style="max-width: 1248px; margin: 40px auto 0; padding: 0 24px; box-sizing: border-box">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 18px 0 28px; border-top: 1px solid rgba(255,255,255,.16)">
+<p style="margin: 0; font-size: 13px; color: rgba(255,255,255,.75)">Universidade Federal Fluminense · Niterói, RJ · Agência de Inovação (AGIR) · PROPPI</p>
+<div style="display: flex; flex-wrap: wrap; gap: 0 20px">
+<a href="DesktopPrivacidade.dc.html" style="display: flex; align-items: center; min-height: 44px; font-size: 14px; color: #ffffff; text-decoration: underline; text-underline-offset: 3px">Privacidade (LGPD)</a>
+<a href="DesktopTermos.dc.html" style="display: flex; align-items: center; min-height: 44px; font-size: 14px; color: #ffffff; text-decoration: underline; text-underline-offset: 3px">Termos de uso</a>
+<a href="DesktopAcessibilidade.dc.html" style="display: flex; align-items: center; min-height: 44px; font-size: 14px; color: #ffffff; text-decoration: underline; text-underline-offset: 3px">Acessibilidade</a>
+<a href="DesktopCookies.dc.html" style="display: flex; align-items: center; min-height: 44px; font-size: 14px; color: #ffffff; text-decoration: underline; text-underline-offset: 3px">Cookies</a>
+<a href="DesktopMapaSite.dc.html" style="display: flex; align-items: center; min-height: 44px; font-size: 14px; color: #ffffff; text-decoration: underline; text-underline-offset: 3px">Mapa do site</a>
+</div>
+</div>
+</div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":420}}'>
+var G = [
+  { t: 'Explorar', links: [{ t: 'Todas as tecnologias', href: 'DesktopCatalogo.dc.html' }, { t: 'Patentes', href: 'DesktopCatalogo.dc.html' }, { t: 'Programas de computador', href: 'DesktopCatalogo.dc.html' }, { t: 'Áreas tecnológicas', href: 'DesktopCatalogo.dc.html' }] },
+  { t: 'Para interessados', links: [{ t: 'Como licenciar', href: 'DesktopComoLicenciar.dc.html' }, { t: 'Manifestar interesse', href: 'DesktopInteresse.dc.html' }, { t: 'Perguntas frequentes', href: 'DesktopInicio.dc.html' }] },
+  { t: 'UFF e AGIR', links: [{ t: 'Sobre a AGIR', href: 'https://agir.uff.br' }, { t: 'Portal da UFF', href: 'https://www.uff.br' }, { t: 'Política de inovação da UFF', href: 'https://agir.uff.br' }] }
+];
+class Component extends DCLogic {
+  renderVals() { return { grupos: G }; }
+}
+</script>
+</body>
+</html>

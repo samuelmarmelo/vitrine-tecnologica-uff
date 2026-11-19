@@ -119,6 +119,15 @@
     }
   }
 
+  function rolaParaAncora(id) {
+    return function (e) {
+      var alvo = document.getElementById(id);
+      if (!alvo) return;
+      e.preventDefault();
+      alvo.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+  }
+
   var BOOLEANOS = ["checked", "disabled", "selected", "hidden", "readonly", "required", "open", "multiple"];
 
   function filhos(nodes, escopo) {
@@ -191,7 +200,13 @@
         continue;
       }
       if (nomeAtr === "ref") { p.ref = v; continue; }
-      if (nomeAtr === "href") v = rotaDeHref(v);
+      if (nomeAtr === "href") {
+        v = rotaDeHref(v);
+        // Âncora na mesma tela (#secao): rola até ela sem mexer na rota.
+        if (typeof v === "string" && v.charAt(0) === "#" && v.charAt(1) !== "/" && v.length > 1 && !p.onclick) {
+          p.onclick = rolaParaAncora(v.slice(1));
+        }
+      }
       v = corrigeUrl(v);
       if (v === false || v === null || v === undefined) {
         if (BOOLEANOS.indexOf(nomeAtr) > -1) p[nomeAtr] = false;
